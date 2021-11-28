@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 public class ReloadSubcmd extends SubCommand {
     @Override
     public void onCommand(CommandSender sender, Command command, String[] args) {
-        if (!sender.hasPermission("handcuff.admin")) {
+        if (!sender.hasPermission("handcuffs.admin")) {
             sender.sendMessage(Strings.ERROR_NOPERMISSION.getFormattedString());
             return;
         }

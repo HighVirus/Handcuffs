@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 public class GetSubcmd extends SubCommand {
     @Override
     public void onCommand(CommandSender sender, Command command, String[] args) {
-        if (!sender.hasPermission("handcuff.get")) {
+        if (!sender.hasPermission("handcuffs.get")) {
             sender.sendMessage(Strings.ERROR_NOPERMISSION.getFormattedString());
             return;
         }

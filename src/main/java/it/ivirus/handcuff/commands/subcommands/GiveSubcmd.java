@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 public class GiveSubcmd extends SubCommand {
     @Override
     public void onCommand(CommandSender sender, Command command, String[] args) {
-        if (!sender.hasPermission("handcuff.give")) {
+        if (!sender.hasPermission("handcuffs.give")) {
             sender.sendMessage(Strings.ERROR_NOPERMISSION.getFormattedString());
             return;
         }
