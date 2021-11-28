@@ -1,0 +1,15 @@
+package it.ivirus.handcuff.commands;
+
+import it.ivirus.handcuff.MainHandcuff;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
+
+public abstract class SubCommand {
+    protected final MainHandcuff plugin = MainHandcuff.getInstance();
+    protected final FileConfiguration config = plugin.getConfig();
+    protected final FileConfiguration langConfig = plugin.getLangConfig();
+    protected final MainHandcuff companyData = MainHandcuff.getInstance();
+
+    public abstract void onCommand(CommandSender sender, Command command, String[] args);
+}

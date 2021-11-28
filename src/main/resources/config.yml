@@ -1,0 +1,6 @@
+distance-to-handcuff: 1
+cooldown: 20  #seconds
+distance-to-teleport: 3 #blocks
+lang: en_US
+handcuff:
+  customModelData: 251120202

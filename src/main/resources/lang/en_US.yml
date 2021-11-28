@@ -1,0 +1,30 @@
+prefix: "&8(&bHoxija&8)&r"
+
+errors:
+  no-permission: "%prefix%&7: You don't have permission to do that."
+  only-player: "%prefix%&7: Command executable only by a player."
+  cooldown: "%prefix%&7: Wait before handcuff/remove handcuff (&c%cooldown%&7)."
+  give-usage: "%prefix%&7: Use /handcuff give [player]"
+  target-offline: "%prefix%&7: This player does not exits or is offline."
+  invalid-value: "%prefix%&7: Invalid value."
+
+info:
+  help:
+    - "&b/handcuffs get"
+    - "&b/handcuffs give"
+    - "&b/handcuffs reload"
+  handcuffs-get: "%prefix%&7: You got handcuff"
+  handcuffs-give: "%prefix%7: You gave &c%amount%&7 handcuffs to &c%target_name%"
+  reload: "%prefix%&7: Config and lang reloaded."
+  sender-handcuffed: "%prefix%&7: You handcuffed &c%target_name%"
+  target-handcuffed: "%prefix%&7: You have been handcuffed!"
+  handcuff-removed: "%prefix%&7: Your handcuffs have been removed"
+  sender-handcuff-removed: "%prefix%&7: You removed handcuffes to &c%target_name%"
+  sender-is-dragging: "%prefix%&7: You are pulling to you &c%target_name%"
+  sender-is-not-dragging: "%prefix%&7: You left &c%target_name%"
+
+item:
+  handcuff:
+    name: "&f&lHandcuffs"
+    lore:
+      - "&7Right-click on player to handcuff"

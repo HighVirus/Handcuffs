@@ -1,0 +1,8 @@
+name: Handcuff
+main: it.ivirus.handcuff.MainHandcuff
+version: ${project.version}
+author: iVirus
+commands:
+  handcuff:
+    description: main command
+    aliases: [hcuff]

@@ -1,0 +1,31 @@
+prefix: "&8(&bHoxija&8)&r"
+
+errors:
+  no-permission: "%prefix%&7: Permesso negato."
+  only-player: "%prefix%&7: Comando eseguibile solo da un giocatore."
+  cooldown: "%prefix%&7: Aspetta prima di riammanettare/smanettare (&c%cooldown%&7)."
+  give-usage: "%prefix%&7: Usa /handcuff give [giocatore]"
+  target-offline: "%prefix%&7: Questo giocatore non esiste o è offline."
+  invalid-value: "%prefix%&7: Valore non valido."
+
+info:
+  help:
+    - "&b/handcuffs get"
+    - "&b/handcuffs give"
+    - "&b/handcuffs reload"
+  handcuffs-get: "%prefix%&7: Hai ricevuto delle manette"
+  handcuffs-give: "%prefix%7: Hai dato &c%amount%&7 manette a &c%target_name%"
+  reload: "%prefix%&7: Configurazioni e messaggi ricaricati."
+  sender-handcuffed: "%prefix%&7: Hai ammanettato &c%target_name%"
+  target-handcuffed: "%prefix%&7: Sei stato ammanettato!"
+  handcuff-removed: "%prefix%&7: Ti sono state rimosse le manette"
+  sender-handcuff-removed: "%prefix%&7: Hai rimosso le manette a &c%target_name%"
+  sender-is-dragging: "%prefix%&7: Stai tirando a te &c%target_name%"
+  sender-is-not-dragging: "%prefix%&7: Hai lasciato &c%target_name%"
+
+item:
+  handcuff:
+    name: "&fManette"
+    lore:
+      - "&7Clicca con tasto destro"
+      - "&7su un giocatore per ammanettarlo."
