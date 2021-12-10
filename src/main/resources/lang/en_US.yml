@@ -19,7 +19,7 @@ info:
   sender-handcuffed: "%prefix%&7: You handcuffed &c%target_name%"
   target-handcuffed: "%prefix%&7: You have been handcuffed!"
   handcuff-removed: "%prefix%&7: Your handcuffs have been removed"
-  sender-handcuff-removed: "%prefix%&7: You removed handcuffes to &c%target_name%"
+  sender-handcuff-removed: "%prefix%&7: You removed handcuffs to &c%target_name%"
   sender-is-dragging: "%prefix%&7: You are pulling to you &c%target_name%"
   sender-is-not-dragging: "%prefix%&7: You left &c%target_name%"
 

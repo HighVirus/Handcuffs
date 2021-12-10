@@ -12,16 +12,17 @@ public class GetSubcmd extends SubCommand {
     @Override
     public void onCommand(CommandSender sender, Command command, String[] args) {
         if (!sender.hasPermission("handcuffs.get")) {
-            sender.sendMessage(Strings.ERROR_NOPERMISSION.getFormattedString());
+            adventure.sender(sender).sendMessage(Strings.ERROR_NOPERMISSION.getFormattedString());
             return;
         }
         if (!(sender instanceof Player)) {
-            sender.sendMessage(Strings.ERROR_ONLY_PLAYER.getFormattedString());
+            adventure.sender(sender).sendMessage(Strings.ERROR_ONLY_PLAYER.getFormattedString());
             return;
         }
         Player player = (Player) sender;
+
         player.getInventory().addItem(HandcuffUtil.getHandcuffItem(1));
-        sender.sendMessage(Strings.INFO_HANDCUFFS_GET.getFormattedString());
+        adventure.player(player).sendMessage(Strings.INFO_HANDCUFFS_GET.getFormattedString());
 
     }
 }

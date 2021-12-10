@@ -5,7 +5,9 @@ import it.ivirus.handcuff.commands.HandcuffCommandHandler;
 import it.ivirus.handcuff.listener.PlayerListener;
 import it.ivirus.handcuff.utils.HandcuffUtil;
 import lombok.Getter;
+import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import org.bstats.bukkit.Metrics;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -19,14 +21,16 @@ public class MainHandcuff extends JavaPlugin {
     private static MainHandcuff instance;
     private File langFile;
     private FileConfiguration langConfig;
+    private BukkitAudiences adventure;
 
     @Override
     public void onEnable() {
         instance = this;
+        this.adventure = BukkitAudiences.create(this);
         this.saveDefaultConfig();
         this.createLangFile("en_US", "it_IT");
         this.loadLangConfig();
-        getCommand("handcuff").setExecutor(new HandcuffCommandHandler());
+        getCommand("handcuff").setExecutor(new HandcuffCommandHandler(this));
         getCommand("handcuff").setTabCompleter(new CommandTabCompleter(this));
         HandcuffUtil.loadListeners(this, new PlayerListener(this));
 
@@ -40,6 +44,14 @@ public class MainHandcuff extends JavaPlugin {
         getLogger().info("Telegram channel: https://t.me/HoxijaChannel");
         getLogger().info("Plugin is ready!");
         getLogger().info("---------------------------------------");
+    }
+
+    @Override
+    public void onDisable() {
+        if (this.adventure != null) {
+            this.adventure.close();
+            this.adventure = null;
+        }
     }
 
     private void createLangFile(String... names) {

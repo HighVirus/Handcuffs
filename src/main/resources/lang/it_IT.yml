@@ -14,7 +14,7 @@ info:
     - "&b/handcuffs give"
     - "&b/handcuffs reload"
   handcuffs-get: "%prefix%&7: Hai ricevuto delle manette"
-  handcuffs-give: "%prefix%7: Hai dato &c%amount%&7 manette a &c%target_name%"
+  handcuffs-give: "%prefix%&7: Hai dato &c%amount%&7 manette a &c%target_name%"
   reload: "%prefix%&7: Configurazioni e messaggi ricaricati."
   sender-handcuffed: "%prefix%&7: Hai ammanettato &c%target_name%"
   target-handcuffed: "%prefix%&7: Sei stato ammanettato!"

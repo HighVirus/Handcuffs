@@ -2,6 +2,9 @@ package it.ivirus.handcuff.utils;
 
 import it.ivirus.handcuff.MainHandcuff;
 import lombok.Getter;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.md_5.bungee.api.ChatColor;
 
 public enum Strings {
@@ -49,11 +52,29 @@ public enum Strings {
         return stringBuilder.toString().replaceAll("%prefix%", getPrefix());
     }
 
-    public String getFormattedString() {
+    /*public String getFormattedString() {
         return ChatColor.translateAlternateColorCodes('&', getString());
     }
 
     public static String getFormattedString(String string) {
+        return ChatColor.translateAlternateColorCodes('&', string);
+    }*/
+
+    public Component getFormattedString() {
+        if (getString().contains("&"))
+            return LegacyComponentSerializer.legacyAmpersand().deserialize(getString());
+        else
+            return MiniMessage.get().parse(getString());
+    }
+
+    public static Component getFormattedString(String string) {
+        if (string.contains("&"))
+            return LegacyComponentSerializer.legacyAmpersand().deserialize(string);
+        else
+            return MiniMessage.get().parse(string);
+    }
+
+    public static String getOldFormatString(String string){
         return ChatColor.translateAlternateColorCodes('&', string);
     }
 

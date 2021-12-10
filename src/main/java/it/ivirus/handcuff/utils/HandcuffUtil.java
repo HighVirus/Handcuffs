@@ -2,6 +2,7 @@ package it.ivirus.handcuff.utils;
 
 import de.tr7zw.changeme.nbtapi.NBTItem;
 import it.ivirus.handcuff.MainHandcuff;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.event.Listener;
@@ -25,11 +26,11 @@ public class HandcuffUtil {
     public static ItemStack getHandcuffItem(int amount) {
         ItemStack itemStack = new ItemStack(Material.PAPER, amount);
         ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName(Strings.getFormattedString(MainHandcuff.getInstance().getLangConfig().getString("item.handcuff.name")));
+        itemMeta.setDisplayName(Strings.getOldFormatString(LegacyComponentSerializer.legacyAmpersand().serialize(Strings.getFormattedString(MainHandcuff.getInstance().getLangConfig().getString("item.handcuff.name")))));
         itemMeta.setCustomModelData(plugin.getConfig().getInt("handcuff.customModelData"));
         List<String> lore = new ArrayList<>();
-        for (String s : plugin.getLangConfig().getStringList("item.handcuff.lore")){
-            lore.add(Strings.getFormattedString(s));
+        for (String s : plugin.getLangConfig().getStringList("item.handcuff.lore")) {
+            lore.add(Strings.getOldFormatString(LegacyComponentSerializer.legacyAmpersand().serialize(Strings.getFormattedString(s))));
         }
         itemMeta.setLore(lore);
         itemStack.setItemMeta(itemMeta);

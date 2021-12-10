@@ -9,11 +9,11 @@ public class ReloadSubcmd extends SubCommand {
     @Override
     public void onCommand(CommandSender sender, Command command, String[] args) {
         if (!sender.hasPermission("handcuffs.admin")) {
-            sender.sendMessage(Strings.ERROR_NOPERMISSION.getFormattedString());
+            adventure.sender(sender).sendMessage(Strings.ERROR_NOPERMISSION.getFormattedString());
             return;
         }
         plugin.reloadConfig();
         plugin.loadLangConfig();
-        sender.sendMessage(Strings.INFO_RELOAD.getFormattedString());
+        adventure.sender(sender).sendMessage(Strings.INFO_RELOAD.getFormattedString());
     }
 }

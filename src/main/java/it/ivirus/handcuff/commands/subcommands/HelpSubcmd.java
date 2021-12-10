@@ -9,9 +9,9 @@ public class HelpSubcmd extends SubCommand {
     @Override
     public void onCommand(CommandSender sender, Command command, String[] args) {
         if (!sender.hasPermission("handcuffs.help")) {
-            sender.sendMessage(Strings.ERROR_NOPERMISSION.getFormattedString());
+            adventure.sender(sender).sendMessage(Strings.ERROR_NOPERMISSION.getFormattedString());
             return;
         }
-        sender.sendMessage(Strings.INFO_HELP.getFormattedString());
+        adventure.sender(sender).sendMessage(Strings.INFO_HELP.getFormattedString());
     }
 }
