@@ -4,6 +4,7 @@ import de.tr7zw.changeme.nbtapi.NBTItem;
 import it.ivirus.handcuff.MainHandcuff;
 import it.ivirus.handcuff.data.HandcuffData;
 import it.ivirus.handcuff.utils.Strings;
+import it.ivirus.handcuff.utils.UpdateChecker;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -67,6 +68,20 @@ public class PlayerListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         if (handcuffData.isHandCuffed(event.getPlayer().getUniqueId())) {
             plugin.getAdventure().player(event.getPlayer()).sendMessage(Strings.INFO_TARGET_HANDCUFFED.getFormattedString());
+        }
+    }
+
+    @EventHandler
+    public void onOpPlayerJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+        if (player.hasPermission("handcuffs.admin") || player.isOp()){
+            new UpdateChecker(plugin, 97962).getVersion(version -> {
+                if (!plugin.getDescription().getVersion().equals(version)) {
+                    player.sendMessage("§b------- §fHandcuffs §b-------\n" +
+                            "Update! Download it from:\n" +
+                            "https://www.spigotmc.org/resources/handcuffs-for-roleplay-servers.97962/");
+                }
+            });
         }
     }
 

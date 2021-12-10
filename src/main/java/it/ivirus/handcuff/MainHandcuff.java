@@ -8,7 +8,6 @@ import it.ivirus.handcuff.utils.UpdateChecker;
 import lombok.Getter;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import org.bstats.bukkit.Metrics;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -74,11 +73,9 @@ public class MainHandcuff extends JavaPlugin {
 
     private void versionCheck(){
         new UpdateChecker(this, 97962).getVersion(version -> {
-            if (this.getDescription().getVersion().equals(version)) {
-                getLogger().info("The plugin is up to date.");
-            } else {
-                getLogger().info("There is a new update available.");
-                getLogger().info("Download it from: https://www.spigotmc.org/resources/handcuffs-for-roleplay-servers.97962/");
+            if (!this.getDescription().getVersion().equals(version)) {
+                getLogger().warning("There is a new update available.");
+                getLogger().warning("Download it from: https://www.spigotmc.org/resources/handcuffs-for-roleplay-servers.97962/");
             }
         });
     }
