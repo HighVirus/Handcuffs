@@ -5,7 +5,7 @@
 
     <groupId>it.hoxija</groupId>
     <artifactId>Handcuffs</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>

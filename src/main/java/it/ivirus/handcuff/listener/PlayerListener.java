@@ -73,7 +73,7 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onPlayerHandcuffPlayer(PlayerInteractAtEntityEvent event) {
         Player player = event.getPlayer();
-        if (!player.hasPermission("handcuff.use")) return;
+        if (!player.hasPermission("handcuffs.use")) return;
         if (!(event.getHand() == EquipmentSlot.OFF_HAND)) return;
         if (!(event.getRightClicked() instanceof Player)) return;
         Player target = (Player) event.getRightClicked();

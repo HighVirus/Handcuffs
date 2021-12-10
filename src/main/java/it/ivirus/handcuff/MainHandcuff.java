@@ -4,6 +4,7 @@ import it.ivirus.handcuff.commands.CommandTabCompleter;
 import it.ivirus.handcuff.commands.HandcuffCommandHandler;
 import it.ivirus.handcuff.listener.PlayerListener;
 import it.ivirus.handcuff.utils.HandcuffUtil;
+import it.ivirus.handcuff.utils.UpdateChecker;
 import lombok.Getter;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import org.bstats.bukkit.Metrics;
@@ -44,6 +45,7 @@ public class MainHandcuff extends JavaPlugin {
         getLogger().info("Telegram channel: https://t.me/HoxijaChannel");
         getLogger().info("Plugin is ready!");
         getLogger().info("---------------------------------------");
+        this.versionCheck();
     }
 
     @Override
@@ -68,5 +70,16 @@ public class MainHandcuff extends JavaPlugin {
             langFile = new File(getDataFolder(), "lang" + File.separator + "en_US.yml");
         }
         langConfig = YamlConfiguration.loadConfiguration(langFile);
+    }
+
+    private void versionCheck(){
+        new UpdateChecker(this, 97962).getVersion(version -> {
+            if (this.getDescription().getVersion().equals(version)) {
+                getLogger().info("The plugin is up to date.");
+            } else {
+                getLogger().info("There is a new update available.");
+                getLogger().info("Download it from: https://www.spigotmc.org/resources/handcuffs-for-roleplay-servers.97962/");
+            }
+        });
     }
 }
