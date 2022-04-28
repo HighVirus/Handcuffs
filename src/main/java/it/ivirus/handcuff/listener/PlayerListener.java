@@ -184,7 +184,7 @@ public class PlayerListener implements Listener {
                     plugin.getAdventure().player(player).sendMessage(Strings.ERROR_BLOCKED_COMMAND.getFormattedString());
                 }
             } else if (plugin.getConfig().getString("mode").equalsIgnoreCase("BLACKLIST")) {
-                for (String s : plugin.getConfig().getStringList("blacklisted-commands-commands")) {
+                for (String s : plugin.getConfig().getStringList("blacklisted-commands")) {
                     if (s.equalsIgnoreCase(command)) {
                         isValid = true;
                         break;
