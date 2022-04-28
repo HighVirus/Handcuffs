@@ -5,7 +5,15 @@ lang: en_US
 handcuff:
   customModelData: 251120202
 
+
+mode: WHITELIST   #types: WHITELIST, BLACKLIST
+
 whitelisted-commands:
+  - "command1"
+  - "command2"
+  - "others"
+
+blacklisted-commands:
   - "command1"
   - "command2"
   - "others"

@@ -76,6 +76,7 @@ public class MainHandcuff extends JavaPlugin {
             if (!this.getDescription().getVersion().equals(version)) {
                 getLogger().warning("There is a new update available.");
                 getLogger().warning("Download it from: https://www.spigotmc.org/resources/handcuffs-for-roleplay-servers.97962/");
+                getLogger().warning("Arricuort che e a fa gli aggiornamenti uaglió");
             }
         });
     }

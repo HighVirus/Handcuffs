@@ -76,7 +76,7 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onOpPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        if (player.hasPermission("handcuffs.admin") || player.isOp()){
+        if (player.hasPermission("handcuffs.admin") || player.isOp()) {
             new UpdateChecker(plugin, 97962).getVersion(version -> {
                 if (!plugin.getDescription().getVersion().equals(version)) {
                     player.sendMessage("§b------- §fHandcuffs §b-------\n" +
@@ -167,21 +167,35 @@ public class PlayerListener implements Listener {
     }
 
     @EventHandler
-    public void onPlayerPreProcessCommand(PlayerCommandPreprocessEvent event){
+    public void onPlayerPreProcessCommand(PlayerCommandPreprocessEvent event) {
         Player player = event.getPlayer();
-        String command = event.getMessage().split(" ")[0].toLowerCase();
-        boolean commandWhitelisted = false;
-        if (handcuffData.isHandCuffed(player.getUniqueId())){
-            for (String s : plugin.getConfig().getStringList("whitelisted-commands")){
-                if (s.equalsIgnoreCase(command)) {
-                    commandWhitelisted = true;
-                    break;
+        String command = event.getMessage().split(" ")[0];
+        boolean isValid = false;
+        if (handcuffData.isHandCuffed(player.getUniqueId())) {
+            if (plugin.getConfig().getString("mode").equalsIgnoreCase("WHITELIST")) {
+                for (String s : plugin.getConfig().getStringList("whitelisted-commands")) {
+                    if (s.equalsIgnoreCase(command)) {
+                        isValid = true;
+                        break;
+                    }
                 }
-            }
-            if (!commandWhitelisted){
-                event.setCancelled(true);
-                plugin.getAdventure().player(player).sendMessage(Strings.ERROR_BLOCKED_COMMAND.getFormattedString());
-            }
+                if (!isValid) {
+                    event.setCancelled(true);
+                    plugin.getAdventure().player(player).sendMessage(Strings.ERROR_BLOCKED_COMMAND.getFormattedString());
+                }
+            } else if (plugin.getConfig().getString("mode").equalsIgnoreCase("BLACKLIST")) {
+                for (String s : plugin.getConfig().getStringList("blacklisted-commands-commands")) {
+                    if (s.equalsIgnoreCase(command)) {
+                        isValid = true;
+                        break;
+                    }
+                }
+                if (isValid) {
+                    event.setCancelled(true);
+                    plugin.getAdventure().player(player).sendMessage(Strings.ERROR_BLOCKED_COMMAND.getFormattedString());
+                }
+            } else
+                throw new IllegalArgumentException("Invalid mode, use WHITELIST or BLACKLIST");
         }
     }
 }
