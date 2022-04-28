@@ -25,6 +25,7 @@ public enum Strings {
     ERROR_TARGET_OFFLINE("errors.target-offline"),
     ERROR_ONLY_PLAYER("errors.only-player"),
     ERROR_INVALID_VALUE("errors.invalid-value"),
+    ERROR_BLOCKED_COMMAND("errors.blocked-command"),
     ERROR_NOPERMISSION("errors.no-permission");
 
 

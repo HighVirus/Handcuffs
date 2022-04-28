@@ -19,6 +19,8 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 @RequiredArgsConstructor
 public class PlayerListener implements Listener {
     private final HandcuffData handcuffData = HandcuffData.getInstance();
@@ -153,7 +155,7 @@ public class PlayerListener implements Listener {
         Player player = (Player) event.getPlayer();
         if (handcuffData.isHandCuffed(player.getUniqueId())) {
             event.setCancelled(true);
-            Bukkit.getScheduler().runTaskLater(plugin, (@NotNull Runnable) player::closeInventory, 1);
+            Bukkit.getScheduler().runTaskLater(plugin, player::closeInventory, 1);
         }
     }
 
@@ -161,6 +163,25 @@ public class PlayerListener implements Listener {
     public void onPlayerSwapItem(PlayerSwapHandItemsEvent event) {
         if (handcuffData.isHandCuffed(event.getPlayer().getUniqueId())) {
             event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onPlayerPreProcessCommand(PlayerCommandPreprocessEvent event){
+        Player player = event.getPlayer();
+        String command = event.getMessage().split(" ")[0].toLowerCase();
+        boolean commandWhitelisted = false;
+        if (handcuffData.isHandCuffed(player.getUniqueId())){
+            for (String s : plugin.getConfig().getStringList("whitelisted-commands")){
+                if (s.equalsIgnoreCase(command)) {
+                    commandWhitelisted = true;
+                    break;
+                }
+            }
+            if (!commandWhitelisted){
+                event.setCancelled(true);
+                plugin.getAdventure().player(player).sendMessage(Strings.ERROR_BLOCKED_COMMAND.getFormattedString());
+            }
         }
     }
 }

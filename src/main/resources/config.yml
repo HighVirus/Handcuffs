@@ -4,3 +4,8 @@ distance-to-teleport: 3 #blocks
 lang: en_US
 handcuff:
   customModelData: 251120202
+
+whitelisted-commands:
+  - "command1"
+  - "command2"
+  - "others"
