@@ -19,6 +19,8 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 @RequiredArgsConstructor
 public class PlayerListener implements Listener {
     private final HandcuffData handcuffData = HandcuffData.getInstance();
@@ -74,7 +76,7 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onOpPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        if (player.hasPermission("handcuffs.admin") || player.isOp()){
+        if (player.hasPermission("handcuffs.admin") || player.isOp()) {
             new UpdateChecker(plugin, 97962).getVersion(version -> {
                 if (!plugin.getDescription().getVersion().equals(version)) {
                     player.sendMessage("§b------- §fHandcuffs §b-------\n" +
@@ -153,7 +155,7 @@ public class PlayerListener implements Listener {
         Player player = (Player) event.getPlayer();
         if (handcuffData.isHandCuffed(player.getUniqueId())) {
             event.setCancelled(true);
-            Bukkit.getScheduler().runTaskLater(plugin, (@NotNull Runnable) player::closeInventory, 1);
+            Bukkit.getScheduler().runTaskLater(plugin, player::closeInventory, 1);
         }
     }
 
@@ -161,6 +163,39 @@ public class PlayerListener implements Listener {
     public void onPlayerSwapItem(PlayerSwapHandItemsEvent event) {
         if (handcuffData.isHandCuffed(event.getPlayer().getUniqueId())) {
             event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onPlayerPreProcessCommand(PlayerCommandPreprocessEvent event) {
+        Player player = event.getPlayer();
+        String command = event.getMessage().split(" ")[0];
+        boolean isValid = false;
+        if (handcuffData.isHandCuffed(player.getUniqueId())) {
+            if (plugin.getConfig().getString("mode").equalsIgnoreCase("WHITELIST")) {
+                for (String s : plugin.getConfig().getStringList("whitelisted-commands")) {
+                    if (s.equalsIgnoreCase(command)) {
+                        isValid = true;
+                        break;
+                    }
+                }
+                if (!isValid) {
+                    event.setCancelled(true);
+                    plugin.getAdventure().player(player).sendMessage(Strings.ERROR_BLOCKED_COMMAND.getFormattedString());
+                }
+            } else if (plugin.getConfig().getString("mode").equalsIgnoreCase("BLACKLIST")) {
+                for (String s : plugin.getConfig().getStringList("blacklisted-commands")) {
+                    if (s.equalsIgnoreCase(command)) {
+                        isValid = true;
+                        break;
+                    }
+                }
+                if (isValid) {
+                    event.setCancelled(true);
+                    plugin.getAdventure().player(player).sendMessage(Strings.ERROR_BLOCKED_COMMAND.getFormattedString());
+                }
+            } else
+                throw new IllegalArgumentException("Invalid mode, use WHITELIST or BLACKLIST");
         }
     }
 }

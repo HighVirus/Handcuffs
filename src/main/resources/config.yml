@@ -3,5 +3,17 @@ cooldown: 20  #seconds
 distance-to-teleport: 3 #blocks
 lang: en_US
 handcuff:
-  item: PAPER
   customModelData: 251120202
+
+
+mode: WHITELIST   #types: WHITELIST, BLACKLIST
+
+whitelisted-commands:
+  - "command1"
+  - "command2"
+  - "others"
+
+blacklisted-commands:
+  - "command1"
+  - "command2"
+  - "others"

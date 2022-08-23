@@ -6,6 +6,7 @@ errors:
   cooldown: "%prefix%&7: Aspetta prima di riammanettare/smanettare (&c%cooldown%&7)."
   give-usage: "%prefix%&7: Usa /handcuff give [giocatore]"
   target-offline: "%prefix%&7: Questo giocatore non esiste o è offline."
+  blocked-command: "%prefix%&7: Non puoi eseguire questo comando da ammanettato."
   invalid-value: "%prefix%&7: Valore non valido."
 
 info:

@@ -6,6 +6,7 @@ errors:
   cooldown: "%prefix%&7: Wait before handcuff/remove handcuff (&c%cooldown%&7)."
   give-usage: "%prefix%&7: Use /handcuff give [player]"
   target-offline: "%prefix%&7: This player does not exits or is offline."
+  blocked-command: "%prefix%&7: You cannot execute this command while handcuffed."
   invalid-value: "%prefix%&7: Invalid value."
 
 info:
