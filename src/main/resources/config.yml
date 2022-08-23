@@ -3,6 +3,7 @@ cooldown: 20  #seconds
 distance-to-teleport: 3 #blocks
 lang: en_US
 handcuff:
+  item: PAPER
   customModelData: 251120202
 
 
