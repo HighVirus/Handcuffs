@@ -52,29 +52,21 @@ public enum Strings {
         return stringBuilder.toString().replaceAll("%prefix%", getPrefix());
     }
 
-    /*public String getFormattedString() {
-        return ChatColor.translateAlternateColorCodes('&', getString());
-    }
-
-    public static String getFormattedString(String string) {
-        return ChatColor.translateAlternateColorCodes('&', string);
-    }*/
-
     public Component getFormattedString() {
         if (getString().contains("&"))
             return LegacyComponentSerializer.legacyAmpersand().deserialize(getString());
         else
-            return MiniMessage.get().parse(getString());
+            return MiniMessage.miniMessage().deserialize(getString());
     }
 
     public static Component getFormattedString(String string) {
         if (string.contains("&"))
             return LegacyComponentSerializer.legacyAmpersand().deserialize(string);
         else
-            return MiniMessage.get().parse(string);
+            return MiniMessage.miniMessage().deserialize(string);
     }
 
-    public static String getOldFormatString(String string){
+    public static String getOldFormatString(String string) {
         return ChatColor.translateAlternateColorCodes('&', string);
     }
 

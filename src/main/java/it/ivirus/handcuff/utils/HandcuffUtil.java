@@ -24,7 +24,7 @@ public class HandcuffUtil {
     }
 
     public static ItemStack getHandcuffItem(int amount) {
-        ItemStack itemStack = new ItemStack(Material.PAPER, amount);
+        ItemStack itemStack = new ItemStack(Material.valueOf(plugin.getConfig().getString("handcuff.item")), amount);
         ItemMeta itemMeta = itemStack.getItemMeta();
         itemMeta.setDisplayName(Strings.getOldFormatString(LegacyComponentSerializer.legacyAmpersand().serialize(Strings.getFormattedString(MainHandcuff.getInstance().getLangConfig().getString("item.handcuff.name")))));
         itemMeta.setCustomModelData(plugin.getConfig().getInt("handcuff.customModelData"));
