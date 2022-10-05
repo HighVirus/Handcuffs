@@ -11,7 +11,12 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.*;
@@ -90,6 +95,12 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onPlayerHandcuffPlayer(PlayerInteractAtEntityEvent event) {
         Player player = event.getPlayer();
+
+        if (handcuffData.isHandCuffed(player.getUniqueId())) {
+            event.setCancelled(true);
+            return;
+        }
+
         if (!player.hasPermission("handcuffs.use")) return;
         if (!(event.getHand() == EquipmentSlot.OFF_HAND)) return;
         if (!(event.getRightClicked() instanceof Player)) return;
@@ -137,6 +148,36 @@ public class PlayerListener implements Listener {
     public void onPlayerClickOnGui(InventoryClickEvent event) {
         if (!(event.getWhoClicked() instanceof Player)) return;
         Player player = (Player) event.getWhoClicked();
+        if (handcuffData.isHandCuffed(player.getUniqueId())) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onPlayerBuild(BlockPlaceEvent event){
+        if (handcuffData.isHandCuffed(event.getPlayer().getUniqueId())) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onPlayerBreak(BlockBreakEvent event){
+        if (handcuffData.isHandCuffed(event.getPlayer().getUniqueId())) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onPlayerInteract(PlayerInteractEvent event){
+        if (handcuffData.isHandCuffed(event.getPlayer().getUniqueId())) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onPlayerAttack(EntityDamageByEntityEvent event){
+        if (!(event.getDamager() instanceof Player)) return;
+        Player player = (Player) event.getDamager();
         if (handcuffData.isHandCuffed(player.getUniqueId())) {
             event.setCancelled(true);
         }
