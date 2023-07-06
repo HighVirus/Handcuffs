@@ -1,0 +1,29 @@
+prefix: "&8(&bНаручники&8)&r"
+
+errors:
+  no-permission: "%prefix%&7: У вас нет разрешения на это."
+  only-player: "%prefix%&7: Команда может быть выполнена только игроком."
+  cooldown: "%prefix%&7: Подождите перед надеванием/снятием наручников (&c%cooldown%&7)."
+  give-usage: "%prefix%&7: Используйте /handcuff give [игрок]"
+  target-offline: "%prefix%&7: Этот игрок не существует или находится в оффлайне."
+  blocked-command: "%prefix%&7: Вы не можете выполнить эту команду, находясь в наручниках."
+  invalid-value: "%prefix%&7: Недопустимое значение."
+info:
+  help:
+    - "&b/handcuffs get"
+    - "&b/handcuffs give"
+    - "&b/handcuffs reload"
+  handcuffs-get: "%prefix%&7: Вы получили наручники"
+  handcuffs-give: "%prefix%&7: Вы дали &c%amount%&7 наручников игроку &c%targetname%"
+  reload: "%prefix%&7: Конфигурация и языковые файлы перезагружены."
+  sender-handcuffed: "%prefix%&7: Вы надели наручники на игрока &c%targetname%"
+  target-handcuffed: "%prefix%&7: На вас надели в наручники!"
+  handcuff-removed: "%prefix%&7: Ваши наручники были сняты"
+  sender-handcuff-removed: "%prefix%&7: Вы сняли наручники с игрока &c%targetname%"
+  sender-is-dragging: "%prefix%&7: Вы тянете к себе игрока &c%targetname%"
+  sender-is-not-dragging: "%prefix%&7: Вы отпустили игрока &c%target_name%"
+item:
+  handcuff:
+    name: "&f&lНаручники"
+    lore:
+      - "&7Щелкните правой кнопкой мыши по игроку, чтобы надеть наручники"
