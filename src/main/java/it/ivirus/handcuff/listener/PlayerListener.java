@@ -210,6 +210,7 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onPlayerPreProcessCommand(PlayerCommandPreprocessEvent event) {
         Player player = event.getPlayer();
+        if (player.isOp() || player.hasPermission("handcuffs.remove")) return;
         String command = event.getMessage().split(" ")[0];
         boolean isValid = false;
         if (handcuffData.isHandCuffed(player.getUniqueId())) {

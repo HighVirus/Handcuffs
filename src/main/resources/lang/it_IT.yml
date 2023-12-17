@@ -8,7 +8,7 @@ errors:
   target-offline: "%prefix%&7: Questo giocatore non esiste o è offline."
   blocked-command: "%prefix%&7: Non puoi eseguire questo comando da ammanettato."
   invalid-value: "%prefix%&7: Valore non valido."
-  player-not-handcuffed: "%prefix%&7: Questo giocatore non è ammanettato."
+  target-not-handcuffed: "%prefix%&7: Questo giocatore non è ammanettato."
   remove-usage: "%prefix%&7: Usa /handcuff remove [giocatore]"
 
 info:
