@@ -16,6 +16,7 @@ info:
     - "&b/handcuffs get"
     - "&b/handcuffs give"
     - "&b/handcuffs reload"
+    - "&b/handcuffs remove"
   handcuffs-get: "%prefix%&7: You got handcuff"
   handcuffs-give: "%prefix%7: You gave &c%amount%&7 handcuffs to &c%target_name%"
   reload: "%prefix%&7: Config and lang reloaded."
