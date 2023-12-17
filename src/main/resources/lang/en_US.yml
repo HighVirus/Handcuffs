@@ -8,6 +8,8 @@ errors:
   target-offline: "%prefix%&7: This player does not exits or is offline."
   blocked-command: "%prefix%&7: You cannot execute this command while handcuffed."
   invalid-value: "%prefix%&7: Invalid value."
+  player-not-handcuffed: "%prefix%&7: This player is not handcuffed."
+  remove-usage: "%prefix%&7: Use /handcuff remove [player]"
 
 info:
   help:

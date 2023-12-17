@@ -10,7 +10,7 @@ public abstract class SubCommand {
     protected final MainHandcuff plugin = MainHandcuff.getInstance();
     protected final FileConfiguration config = plugin.getConfig();
     protected final FileConfiguration langConfig = plugin.getLangConfig();
-    protected final MainHandcuff companyData = MainHandcuff.getInstance();
+    protected final MainHandcuff mainHandcuff = MainHandcuff.getInstance();
     protected final BukkitAudiences adventure = plugin.getAdventure();
 
     public abstract void onCommand(CommandSender sender, Command command, String[] args);

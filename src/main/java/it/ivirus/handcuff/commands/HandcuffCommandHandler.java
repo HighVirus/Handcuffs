@@ -1,10 +1,7 @@
 package it.ivirus.handcuff.commands;
 
 import it.ivirus.handcuff.MainHandcuff;
-import it.ivirus.handcuff.commands.subcommands.GetSubcmd;
-import it.ivirus.handcuff.commands.subcommands.GiveSubcmd;
-import it.ivirus.handcuff.commands.subcommands.HelpSubcmd;
-import it.ivirus.handcuff.commands.subcommands.ReloadSubcmd;
+import it.ivirus.handcuff.commands.subcommands.*;
 import it.ivirus.handcuff.utils.Strings;
 import lombok.Getter;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
@@ -28,6 +25,7 @@ public class HandcuffCommandHandler implements CommandExecutor {
         registerCommand("help", new HelpSubcmd());
         registerCommand("get", new GetSubcmd());
         registerCommand("give", new GiveSubcmd());
+        registerCommand("remove", new RemoveSubcmd());
     }
 
 

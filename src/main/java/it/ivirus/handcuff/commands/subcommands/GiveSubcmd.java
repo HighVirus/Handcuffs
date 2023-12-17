@@ -3,7 +3,6 @@ package it.ivirus.handcuff.commands.subcommands;
 import it.ivirus.handcuff.commands.SubCommand;
 import it.ivirus.handcuff.utils.HandcuffUtil;
 import it.ivirus.handcuff.utils.Strings;
-import org.apache.commons.lang.math.NumberUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -27,15 +26,17 @@ public class GiveSubcmd extends SubCommand {
         }
         int amount = 1;
         if (args.length != 2) {
-            if (!NumberUtils.isDigits(args[2])) {
+            try {
+                amount = Integer.parseInt(args[2]);
+                if (amount < 1) {
+                    adventure.sender(sender).sendMessage(Strings.ERROR_INVALID_VALUE.getFormattedString());
+                    return;
+                }
+            } catch (NumberFormatException e) {
                 adventure.sender(sender).sendMessage(Strings.ERROR_INVALID_VALUE.getFormattedString());
                 return;
             }
-            amount = Integer.parseInt(args[2]);
-            if (amount < 1) {
-                adventure.sender(sender).sendMessage(Strings.ERROR_INVALID_VALUE.getFormattedString());
-                return;
-            }
+
         }
         target.getInventory().addItem(HandcuffUtil.getHandcuffItem(amount));
         adventure.player(target).sendMessage(Strings.INFO_HANDCUFFS_GET.getFormattedString());

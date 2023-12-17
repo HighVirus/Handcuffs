@@ -26,7 +26,10 @@ public enum Strings {
     ERROR_ONLY_PLAYER("errors.only-player"),
     ERROR_INVALID_VALUE("errors.invalid-value"),
     ERROR_BLOCKED_COMMAND("errors.blocked-command"),
-    ERROR_NOPERMISSION("errors.no-permission");
+    ERROR_NOPERMISSION("errors.no-permission"),
+    ERROR_TARGET_NOT_HANDCUFFED("errors.target-not-handcuffed"),
+    ERROR_USAGE_REMOVE("errors.remove-usage"),
+    ;
 
 
     private final MainHandcuff plugin = MainHandcuff.getInstance();

@@ -1,7 +1,7 @@
 name: Handcuff
 main: it.ivirus.handcuff.MainHandcuff
 version: ${project.version}
-api-version: 1.16
+api-version: 1.20
 author: iVirus
 commands:
   handcuff:
